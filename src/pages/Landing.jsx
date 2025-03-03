@@ -1,67 +1,31 @@
-import { Box, Container,CssBaseline ,Typography,Button, List, ListItem,ListItemText} from "@mui/material";
+import { Box, Container, CssBaseline, Typography, Button, List, ListItem, ListItemText } from "@mui/material";
 import { Link } from "react-router-dom";
+
 function LandingPage() {
   return (
-    <Box sx={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
-      <Container component="main" maxWidth="md" sx={{ flexGrow: 1 }}>
-        <CssBaseline />
+    <Box sx={{ minHeight: "100vh", display: "flex", flexDirection: "column", bgcolor: "#f4f6f8" }}>
+      <CssBaseline />
 
+      {/* Main Content */}
+      <Container component="main" maxWidth="md" sx={{ flexGrow: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+        
         {/* Hero Section */}
-        <Box sx={{ my: 6, textAlign: "center" }}>
-          <Typography
-            variant="h2"
-            component="h1"
-            fontWeight={700}
-            gutterBottom
-            sx={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
-          >
-            Welcome to Snippets App
-          </Typography>
-          <Typography variant="h5" component="p" sx={{ opacity: 0.9, mb: 3, maxWidth: "80%", margin: "auto" }}>
-            Your one-stop solution for managing and sharing code snippets efficiently.
-          </Typography>
+        <Box sx={{ textAlign: "center", mb: 6 }}>
+          <Typography variant="h3" fontWeight={700} gutterBottom sx={{ color: "#333" }}>Welcome to Snippets App</Typography>
+          <Typography variant="h6" sx={{ color: "#666", mb: 3 }}>Your one-stop solution for managing and sharing code snippets efficiently.</Typography>
 
-          {/* CTA Button */}
-          <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
-            <Button
-            component={Link}
-            to="/login"
-              variant="contained"
-              size="large"
-              sx={{
-                px: 4,
-                py: 1.5,
-                fontSize: "1.1rem",
-                borderRadius: "30px",
-                boxShadow: "0px 4px 10px rgba(0,0,0,0.3)",
-              }}
-            >
-              Get Started
-            </Button>
-          </Box>
+          <Button component={Link} to="/login" variant="contained" size="large" sx={{ px: 4, py: 1.3, fontSize: "1rem", borderRadius: "25px", boxShadow: "0px 4px 10px rgba(0,0,0,0.2)", bgcolor: "#1976d2", "&:hover": { bgcolor: "#1565c0" } }}>
+            Get Started
+          </Button>
         </Box>
 
         {/* Features Section */}
-        <Box
-          sx={{
-            my: 6,
-            bgcolor: "rgba(255, 255, 255, 0.1)",
-            p: 4,
-            borderRadius: 3,
-            boxShadow: "0px 4px 10px rgba(0,0,0,0.2)",
-          }}
-        >
-          <Typography variant="h4" component="h2" fontWeight={600} gutterBottom textAlign="center">
-            Features
-          </Typography>
-          <List sx={{ maxWidth: 500, margin: "auto" }}>
-            {[
-              "Organize your code snippets easily",
-              "Search and filter snippets in seconds",
-              "Share snippets securely with your team",
-            ].map((feature, index) => (
-              <ListItem key={index} sx={{ borderBottom: "1px solid rgba(255,255,255,0.2)" }}>
-                <ListItemText primary={feature} />
+        <Box sx={{ p: 4, borderRadius: 2, boxShadow: 2, bgcolor: "white", textAlign: "center" }}>
+          <Typography variant="h4" fontWeight={600} gutterBottom sx={{ color: "#444" }}>Features</Typography>
+          <List sx={{ maxWidth: 500, margin: "auto", textAlign: "left" }}>
+            {["Organize your code snippets easily", "Search and filter snippets in seconds", "Share snippets securely with your team"].map((feature, index) => (
+              <ListItem key={index} sx={{ borderBottom: "1px solid #ddd", py: 1 }}>
+                <ListItemText primary={feature} sx={{ color: "#555" }} />
               </ListItem>
             ))}
           </List>
@@ -69,10 +33,8 @@ function LandingPage() {
       </Container>
 
       {/* Footer */}
-      <Box sx={{ py: 2, bgcolor: "rgba(0, 0, 0, 0.7)", textAlign: "center" }}>
-        <Typography variant="body2" color="white">
-          &copy; {new Date().getFullYear()} Snippets App. All rights reserved.
-        </Typography>
+      <Box sx={{ py: 2, bgcolor: "#222", textAlign: "center" }}>
+        <Typography variant="body2" color="white">&copy; {new Date().getFullYear()} Snippets App. All rights reserved.</Typography>
       </Box>
     </Box>
   );

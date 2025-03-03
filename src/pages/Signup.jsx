@@ -1,40 +1,37 @@
-import { Box, Button, TextField, Typography,Link } from "@mui/material";
+import { Box, Button, TextField, Typography, Link } from "@mui/material";
 import { useState } from "react";
 import Alert from "@mui/material/Alert";
 import { Link as RouterLink } from "react-router-dom";
 
 function Signup() {
     const [error, setError] = useState(null);
+
     const handleOnSubmit = (e) => {
         e.preventDefault();
         if (e.target.password.value !== e.target.confirmPassword.value) {
             setError("Passwords do not match");
             return;
-        }
-        else {
+        } else {
             console.log("Submitted");
         }
     };
+
     return (
-        <Box sx={{ minHeight: "100vh", display: "flex", flexDirection: "column", py: 5 }}>
-            <Box maxWidth={400} border={1} borderRadius={3} p={3} mx="auto" mt={3} boxShadow={3} borderColor={"rgba(255, 255, 255, 0.2)"}>
-                {/* Signup form */}
+        <Box sx={{ minHeight: "100vh", display: "flex", justifyContent: "center", alignItems: "center", backgroundColor: "#f4f6f8" }}>
+            <Box sx={{ width: 360, p: 4, borderRadius: 2, boxShadow: 3, bgcolor: "white" }}>
                 <form onSubmit={handleOnSubmit}>
-                    <Typography variant="h3" component="h6" fontWeight={700} gutterBottom sx={{mt: 3, textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)", color: "black", fontSize: "2.5rem" }}>
-                        Sign Up
+                    <Typography variant="h4" fontWeight={700} gutterBottom sx={{ textAlign: "center", color: "#333" }}>Sign Up</Typography>
+                    <Typography variant="body1" sx={{ color: "#666", textAlign: "center", mb: 2 }}>Create your snippets account.</Typography>
+                    {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
+                    <TextField required label="Username" name="username" fullWidth margin="dense" />
+                    <TextField required label="Email" type="email" name="email" fullWidth margin="dense" />
+                    <TextField required label="Password" type="password" name="password" fullWidth margin="dense" />
+                    <TextField required label="Confirm Password" type="password" name="confirmPassword" fullWidth margin="dense" />
+                    <Button variant="contained" type="submit" fullWidth sx={{ mt: 2, py: 1.2, fontWeight: "bold", bgcolor: "#1976d2", "&:hover": { bgcolor: "#1565c0" } }}>Sign Up</Button>
+                    <Typography variant="body2" sx={{ textAlign: "center", mt: 2, color: "#444" }}>
+                        Already have an account? 
+                        <Link component={RouterLink} to="/login" sx={{ ml: 0.5, fontWeight: "bold", color: "#1976d2", textDecoration: "none", "&:hover": { textDecoration: "underline" } }}>Login</Link>
                     </Typography>
-                    <Typography variant="h5" component="p" sx={{ color: "black", opacity: 0.9, mb: 3, maxWidth: "80%", }}>
-                        to create your snippets account.
-                    </Typography>
-                    {error && <Alert variant="filled" margin="normal" sx={{ my: 2 }} severity="error">{error}</Alert>}
-                    <TextField required label="Username" type="text" id="username" name="username" fullWidth margin="normal" sx={{ mb: 2 }} />
-                    <TextField required label="Email" type="email" id="email" name="email" fullWidth margin="normal" sx={{ mb: 2 }} />
-                    <TextField required label="Password" type="password" id="password" name="password" fullWidth margin="normal" sx={{ mb: 2 }} />
-                    <TextField required label="Confirm Password" type="password" id="confirmPassword" name="confirmPassword" fullWidth margin="normal" sx={{ mb: 2 }} />
-                    <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                        <Button variant="contained" type="submit" fullWidth margin='normal' sx={{ mb: 2 }}>Sign Up</Button>
-                        <Typography variant="outlined" sx={{ display: "block" }}>Have Account? <Link underline="hover" color="black" component={RouterLink} to="/login"> Login</Link></Typography>
-                    </Box>
                 </form>
             </Box>
         </Box>
