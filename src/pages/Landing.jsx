@@ -1,11 +1,8 @@
 import { Box, Container,CssBaseline ,Typography,Button, List, ListItem,ListItemText} from "@mui/material";
-import Navbar from "../components/Navbar";
+import { Link } from "react-router-dom";
 function LandingPage() {
   return (
     <Box sx={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
-      {/* Navbar */}
-      <Navbar />
-
       <Container component="main" maxWidth="md" sx={{ flexGrow: 1 }}>
         <CssBaseline />
 
@@ -27,6 +24,8 @@ function LandingPage() {
           {/* CTA Button */}
           <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
             <Button
+            component={Link}
+            to="/login"
               variant="contained"
               size="large"
               sx={{
